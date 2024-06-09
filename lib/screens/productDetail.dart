@@ -42,8 +42,6 @@ class ProductDetailPage extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Column(
-                        // allow the rows to grow to the whole screen width
-
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           SizedBox(

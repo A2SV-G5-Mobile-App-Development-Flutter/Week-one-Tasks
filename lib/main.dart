@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mobilelearningpath/screens/newProduct.dart';
 import 'package:mobilelearningpath/screens/productDetail.dart';
 import 'package:mobilelearningpath/screens/productList.dart';
 
@@ -16,8 +17,8 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        home: ProductDetailPage()
+        // home: ProductDetailPage()
         // home: const ProductList(),
-        );
+        home: AddProductPage());
   }
 }
