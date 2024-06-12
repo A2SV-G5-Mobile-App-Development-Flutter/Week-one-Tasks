@@ -33,8 +33,11 @@ class _AddProductPageState extends State<AddProductPage> {
       appBar: AppBar(
         // set bg color to white
         backgroundColor: Colors.transparent,
+        centerTitle: true,
         elevation: 0,
-        title: const Text('Add Product'),
+        title: const Text(
+          'Add Product',
+        ),
         leading: IconButton(
           icon: const Icon(Icons.arrow_back),
           onPressed: () {
@@ -161,7 +164,7 @@ class _AddProductPageState extends State<AddProductPage> {
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(10),
                         ),
-                        backgroundColor: const Color.fromARGB(255, 96, 10, 235),
+                        backgroundColor: const Color.fromARGB(255, 60, 84, 252),
                         padding: const EdgeInsets.symmetric(
                           horizontal: 32.0,
                           vertical: 16.0,
@@ -188,6 +191,7 @@ class _AddProductPageState extends State<AddProductPage> {
                       style: ElevatedButton.styleFrom(
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(10),
+                          side: const BorderSide(color: Colors.red),
                         ),
                         backgroundColor: Colors.white,
                         padding: const EdgeInsets.symmetric(

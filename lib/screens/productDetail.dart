@@ -123,8 +123,9 @@ class ProductDetailPage extends StatelessWidget {
                           onSelected: (selected) {
                             // Handle size selection
                           },
-                          selectedColor: const Color.fromARGB(255, 96, 10, 235),
+                          selectedColor: const Color.fromARGB(255, 60, 84, 252),
                           backgroundColor: Colors.grey[200],
+                          showCheckmark: false,
                         );
                       },
                     ),
@@ -143,19 +144,17 @@ class ProductDetailPage extends StatelessWidget {
                     children: [
                       ElevatedButton(
                         style: ElevatedButton.styleFrom(
-                          // update the border radius to make it rectangular
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(10),
+                            side: const BorderSide(color: Colors.red),
                           ),
                           backgroundColor: Colors.white,
                           padding: const EdgeInsets.symmetric(
-                            horizontal: 32.0,
+                            horizontal: 42.0,
                             vertical: 12.0,
                           ),
                         ),
-                        onPressed: () {
-                          // Handle delete button press
-                        },
+                        onPressed: () {},
                         child: const Text(
                           'DELETE',
                           style: TextStyle(
@@ -170,9 +169,9 @@ class ProductDetailPage extends StatelessWidget {
                             borderRadius: BorderRadius.circular(10),
                           ),
                           backgroundColor:
-                              const Color.fromARGB(255, 96, 10, 235),
+                              const Color.fromARGB(255, 60, 84, 252),
                           padding: const EdgeInsets.symmetric(
-                            horizontal: 32.0,
+                            horizontal: 42.0,
                             vertical: 12.0,
                           ),
                         ),
