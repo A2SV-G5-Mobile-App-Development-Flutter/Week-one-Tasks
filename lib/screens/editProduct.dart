@@ -4,14 +4,14 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:mobilelearningpath/types/Product.dart';
 
-class NewProduct extends StatefulWidget {
-  const NewProduct({super.key});
+class EditProduct extends StatefulWidget {
+  const EditProduct({super.key});
 
   @override
-  _NewProductState createState() => _NewProductState();
+  _EditProductState createState() => _EditProductState();
 }
 
-class _NewProductState extends State<NewProduct> {
+class _EditProductState extends State<EditProduct> {
   final _formKey = GlobalKey<FormState>();
   final _nameController = TextEditingController();
   final _categoryController = TextEditingController();
@@ -29,9 +29,18 @@ class _NewProductState extends State<NewProduct> {
 
   @override
   Widget build(BuildContext context) {
+    // get product object from arguments
     final routeArgs =
         ModalRoute.of(context)!.settings.arguments as Map<String, dynamic>;
-    final Function addProduct = routeArgs['addProduct'];
+    final Product product = routeArgs['product'] as Product;
+    final Function updateProduct = routeArgs['updateProduct'];
+    final Function deleteProduct = routeArgs['deleteProduct'];
+    // set product data to form fields
+    _nameController.text = product.name;
+    _categoryController.text = product.category;
+    _priceController.text = product.price.toString();
+    _descriptionController.text = product.description;
+
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
@@ -40,12 +49,12 @@ class _NewProductState extends State<NewProduct> {
         centerTitle: true,
         elevation: 0,
         title: const Text(
-          'Add Product',
+          'Edit Product',
         ),
         leading: IconButton(
           icon: const Icon(Icons.arrow_back),
           onPressed: () {
-            // Handle back button press
+            Navigator.pop(context);
           },
         ),
       ),
@@ -175,34 +184,24 @@ class _NewProductState extends State<NewProduct> {
                         ),
                       ),
                       onPressed: () {
-                        // make image required
-                        if (_image == null) {
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            const SnackBar(
-                              content: Text('Please upload an image'),
-                            ),
-                          );
-                          return;
-                        }
                         if (_formKey.currentState!.validate()) {
                           // Handle add product
                           final newProduct = Product(
-                              id: DateTime.now().toString(),
-                              name: _nameController.text,
-                              category: _categoryController.text,
-                              price: double.parse(_priceController.text),
-                              description: _descriptionController.text,
-                              image:
-                                  'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-                              size: "20",
-                              rating: '5');
-
-                          addProduct(newProduct);
-                          Navigator.pop(context);
+                            id: product.id,
+                            name: _nameController.text,
+                            category: _categoryController.text,
+                            price: double.parse(_priceController.text),
+                            description: _descriptionController.text,
+                            image: product.image,
+                            rating: product.rating,
+                            size: product.size,
+                          );
+                          updateProduct(newProduct);
+                          Navigator.pushNamed(context, '/');
                         }
                       },
                       child: const Text(
-                        'ADD',
+                        'UPDATE',
                         style: TextStyle(
                           fontSize: 16.0,
                           color: Colors.white,
@@ -226,7 +225,8 @@ class _NewProductState extends State<NewProduct> {
                         ),
                       ),
                       onPressed: () {
-                        Navigator.pop(context);
+                        deleteProduct(product);
+                        Navigator.pushNamed(context, '/');
                       },
                       child: const Text(
                         'DELETE',

@@ -1,15 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:mobilelearningpath/types/Product.dart';
 
-class ProductDetailPage extends StatelessWidget {
+class ProductDetail extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final routeArgs =
+        ModalRoute.of(context)!.settings.arguments as Map<String, dynamic>;
+    final Product product = routeArgs['product'] as Product;
+    final Function updateProduct = routeArgs['updateProduct'];
+    final Function deleteProduct = routeArgs['deleteProduct'];
+
     return Scaffold(
       body: Column(
         children: [
           Stack(
             children: [
               Image.network(
-                'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+                product.image,
                 height: 200,
                 width: double.infinity,
                 fit: BoxFit.cover,
@@ -26,7 +33,7 @@ class ProductDetailPage extends StatelessWidget {
                     icon: const Icon(Icons.chevron_left,
                         color: Color.fromARGB(255, 0, 0, 0)),
                     onPressed: () {
-                      // Handle back button press
+                      Navigator.pop(context);
                     },
                   ),
                 ),
@@ -46,29 +53,29 @@ class ProductDetailPage extends StatelessWidget {
                         children: [
                           SizedBox(
                             width: MediaQuery.of(context).size.width * 0.90,
-                            child: const Row(
+                            child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
                                 Text(
-                                  "Men's shoe",
-                                  style: TextStyle(
+                                  product.name,
+                                  style: const TextStyle(
                                     fontSize: 16.0,
                                     color: Colors.grey,
                                   ),
                                 ),
-                                SizedBox(width: 8.0),
+                                const SizedBox(width: 8.0),
                                 Row(
                                   children: [
-                                    Icon(
+                                    const Icon(
                                       Icons.star,
                                       color: Colors.amber,
                                       size: 20.0,
                                     ),
-                                    SizedBox(width: 4.0),
+                                    const SizedBox(width: 4.0),
                                     Text(
-                                      '(4.0)',
-                                      style: TextStyle(
+                                      '(${product.rating})',
+                                      style: const TextStyle(
                                         fontSize: 16.0,
                                       ),
                                     ),
@@ -80,19 +87,19 @@ class ProductDetailPage extends StatelessWidget {
                           const SizedBox(height: 4.0),
                           SizedBox(
                             width: MediaQuery.of(context).size.width * 0.90,
-                            child: const Row(
+                            child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Text(
-                                  'Derby Leather',
-                                  style: TextStyle(
+                                  product.name,
+                                  style: const TextStyle(
                                     fontSize: 24.0,
                                     fontWeight: FontWeight.bold,
                                   ),
                                 ),
                                 Text(
-                                  "\$120",
-                                  style: TextStyle(
+                                  "\$${product.price}",
+                                  style: const TextStyle(
                                       fontSize: 16.0, color: Colors.black),
                                 ),
                               ],
@@ -132,7 +139,7 @@ class ProductDetailPage extends StatelessWidget {
                   ),
                   const SizedBox(height: 16.0),
                   Text(
-                    'A derby leather shoe is a classic and versatile footwear option characterized by its open lacing system, where the shoelace eyelets are sewn on top of the vamp (the upper part of the shoe). This design feature provides a more relaxed and casual look compared to the closed lacing system of oxford shoes. Derby shoes are typically made of high-quality leather, known for its durability and elegance, making them suitable for both formal and casual occasions. With their timeless style and comfortable fit, derby leather shoes are a staple in any well-rounded wardrobe.',
+                    product.description,
                     style: TextStyle(
                       fontSize: 16.0,
                       color: Colors.grey[800],
@@ -154,7 +161,10 @@ class ProductDetailPage extends StatelessWidget {
                             vertical: 12.0,
                           ),
                         ),
-                        onPressed: () {},
+                        onPressed: () {
+                          deleteProduct(product);
+                          Navigator.pop(context);
+                        },
                         child: const Text(
                           'DELETE',
                           style: TextStyle(
@@ -176,7 +186,12 @@ class ProductDetailPage extends StatelessWidget {
                           ),
                         ),
                         onPressed: () {
-                          // Handle update button press
+                          Navigator.pushNamed(context, '/editProduct',
+                              arguments: {
+                                'product': product,
+                                'updateProduct': updateProduct,
+                                'deleteProduct': deleteProduct
+                              });
                         },
                         child: const Text(
                           'UPDATE',
