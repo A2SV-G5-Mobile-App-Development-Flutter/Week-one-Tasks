@@ -5,11 +5,6 @@ import 'package:mobilelearningpath/widgets/productCard.dart';
 class ProductList extends StatefulWidget {
   ProductList({super.key});
 
-  @override
-  State<ProductList> createState() => _ProductListState();
-}
-
-class _ProductListState extends State<ProductList> {
   List<Product> products = [
     Product(
         id: "0",
@@ -45,28 +40,42 @@ class _ProductListState extends State<ProductList> {
         rating: '2.0',
         category: "Headphones")
   ];
+  @override
+  State<ProductList> createState() => _ProductListState();
+}
 
+class _ProductListState extends State<ProductList> {
   void updateProduct(Product product) {
     // find product index
     setState(() {
-      final productIndex = products.indexWhere((p) => p.id == product.id);
+      final productIndex =
+          widget.products.indexWhere((p) => p.id == product.id);
       // update product
-      products[productIndex] = product;
+      widget.products[productIndex].category = product.category;
+      widget.products[productIndex].description = product.description;
+      widget.products[productIndex].image = product.image;
+      widget.products[productIndex].name = product.name;
+      widget.products[productIndex].price = product.price;
+      widget.products[productIndex].rating = product.rating;
+      widget.products[productIndex].size = product.size;
+
+      print("Product updated" + product.price.toString() + "/" + product.id);
     });
   }
 
   void deleteProduct(Product product) {
     setState(() {
       // find product index
-      final productIndex = products.indexWhere((p) => p.id == product.id);
+      final productIndex =
+          widget.products.indexWhere((p) => p.id == product.id);
       // delete product
-      products.removeAt(productIndex);
+      widget.products.removeAt(productIndex);
     });
   }
 
   void addProduct(Product product) {
     setState(() {
-      products.add(product);
+      widget.products.add(product);
     });
   }
 
@@ -80,7 +89,7 @@ class _ProductListState extends State<ProductList> {
             child: ListView(
               padding: const EdgeInsets.all(16.0),
               children: [
-                ...products
+                ...widget.products
                     .map((product) => ProductCard(
                           product: product,
                           deleteProduct: deleteProduct,

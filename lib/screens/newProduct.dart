@@ -45,7 +45,8 @@ class _NewProductState extends State<NewProduct> {
         leading: IconButton(
           icon: const Icon(Icons.arrow_back),
           onPressed: () {
-            // Handle back button press
+            // back
+            Navigator.pop(context);
           },
         ),
       ),

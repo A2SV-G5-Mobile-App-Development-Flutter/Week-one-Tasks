@@ -197,7 +197,7 @@ class _EditProductState extends State<EditProduct> {
                             size: product.size,
                           );
                           updateProduct(newProduct);
-                          Navigator.pushNamed(context, '/');
+                          Navigator.pop(context);
                         }
                       },
                       child: const Text(
