@@ -1,16 +1,9 @@
-# mobilelearningpath
+# eCommerce Application
 
-A new Flutter project.
+This is a simple command-line eCommerce application built with Dart. It allows users to add, view, edit, and delete products.
 
-## Getting Started
+## Running the Application
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+1. Make sure you have Dart installed on your machine.
+2. Navigate to the `product-2` directory in your terminal.
+3. Run the following command to start the application: dart run bin/my_dart_app.dart
