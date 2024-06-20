@@ -12,8 +12,7 @@ class ProductList extends StatefulWidget {
         description:
             'A derby leather shoe is a classic and versatile footwear option characterized by its open lacing system, where the shoelace eyelets are sewn on top of the vamp (the upper part of the shoe). This design feature provides a more relaxed and casual look compared to the closed lacing system of oxford shoes. Derby shoes are typically made of high-quality leather, known for its durability and elegance, making them suitable for both formal and casual occasions. With their timeless style and comfortable fit, derby leather shoes are a staple in any well-rounded wardrobe.',
         price: 120.0,
-        image:
-            'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+        image: 'assets/images/one.jpg',
         size: '7',
         rating: '4.0',
         category: "Headphones"),
@@ -23,8 +22,7 @@ class ProductList extends StatefulWidget {
         description:
             'A derby leather shoe is a classic and versatile footwear option characterized by its open lacing system, where the shoelace eyelets are sewn on top of the vamp (the upper part of the shoe). This design feature provides a more relaxed and casual look compared to the closed lacing system of oxford shoes. Derby shoes are typically made of high-quality leather, known for its durability and elegance, making them suitable for both formal and casual occasions. With their timeless style and comfortable fit, derby leather shoes are a staple in any well-rounded wardrobe.',
         price: 20.0,
-        image:
-            'https://images.unsplash.com/photo-1516972238977-89271fb2bab8?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+        image: 'assets/images/two.jpg',
         size: '7',
         rating: '2.0',
         category: "Headphones"),
@@ -34,9 +32,8 @@ class ProductList extends StatefulWidget {
         description:
             'A derby leather shoe is a classic and versatile footwear option characterized by its open lacing system, where the shoelace eyelets are sewn on top of the vamp (the upper part of the shoe). This design feature provides a more relaxed and casual look compared to the closed lacing system of oxford shoes. Derby shoes are typically made of high-quality leather, known for its durability and elegance, making them suitable for both formal and casual occasions. With their timeless style and comfortable fit, derby leather shoes are a staple in any well-rounded wardrobe.',
         price: 140.0,
-        image:
-            'https://images.unsplash.com/photo-1583360173899-b3124bc238d9?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
         size: '7',
+        image: 'assets/images/three.jpg',
         rating: '2.0',
         category: "Headphones")
   ];
@@ -145,8 +142,7 @@ class Header extends StatelessWidget {
                     decoration: const BoxDecoration(
                       shape: BoxShape.circle,
                       image: DecorationImage(
-                        image: NetworkImage(
-                            'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?q=80&w=1480&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'),
+                        image: AssetImage('assets/images/fourth.jpeg'),
                         fit: BoxFit.cover,
                       ),
                     ),

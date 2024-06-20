@@ -15,7 +15,7 @@ class ProductDetail extends StatelessWidget {
         children: [
           Stack(
             children: [
-              Image.network(
+              Image.asset(
                 product.image,
                 height: 200,
                 width: double.infinity,

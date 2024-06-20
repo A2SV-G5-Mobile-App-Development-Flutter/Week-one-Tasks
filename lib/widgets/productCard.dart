@@ -43,7 +43,7 @@ class ProductCard extends StatelessWidget {
                   topLeft: Radius.circular(16.0),
                   topRight: Radius.circular(16.0),
                 ),
-                child: Image.network(
+                child: Image.asset(
                   product.image,
                   height: 200,
                   width: double.infinity,

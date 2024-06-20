@@ -5,10 +5,10 @@ import 'package:mobilelearningpath/screens/productDetail.dart';
 import 'package:mobilelearningpath/screens/productList.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(MainScreen());
 }
 
-class MyApp extends StatelessWidget {
+class MainScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
